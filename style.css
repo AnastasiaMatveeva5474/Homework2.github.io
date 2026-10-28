@@ -19,8 +19,8 @@ body {
     padding: 0 15px;
 }
 
-/* ---------- Шапка ---------- */
-.site-header {
+/* ---------- Шапка (на всю ширину окна) ---------- */
+#site-header {
     background: #2c7be5;
     color: #fff;
     width: 100%;
@@ -28,45 +28,56 @@ body {
 
 .header-inner {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    padding: 15px;
-    gap: 15px;
+    align-items: stretch;
+    gap: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 .logo {
+    flex-shrink: 0;
+    display: block;
     width: 70px;
     height: 70px;
-    border: 2px solid #fff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    color: #fff;
-    text-decoration: none;
-    flex-shrink: 0;
+    align-self: center;
 }
 
-.site-title h1 {
-    font-size: 20px;
+.logo img {
+    display: block;
+    width: 70px;
+    height: 70px;
 }
 
-/* ---------- Меню ---------- */
-.main-nav {
+/* правая часть шапки: меню сверху, название сайта под ним */
+.header-right {
+    flex: 1;
     display: flex;
-    gap: 15px;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.site-title {
+    font-size: 22px;
+}
+
+/* ---------- Меню (nav) ---------- */
+#main-nav {
+    display: flex;
+    justify-content: flex-end;
     flex-wrap: wrap;
+    gap: 20px;
+    background: #1a4f9c;
+    padding: 8px 15px;
 }
 
-.main-nav a {
+#main-nav a {
     color: #fff;
     text-decoration: none;
     font-weight: bold;
 }
 
-.main-nav a:hover {
+#main-nav a:hover {
     text-decoration: underline;
 }
 
@@ -90,6 +101,10 @@ body {
 
 .block ul a {
     color: #1a4f9c;
+}
+
+.block ol {
+    margin-left: 25px;
 }
 
 /* ---------- Таблица ---------- */
@@ -120,10 +135,17 @@ body {
     background: #ffffff;
 }
 
+/* Объединённые ячейки с видом товара */
+.data-table td.cat {
+    background: #bcd6ff;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
 .total-row {
     text-align: center;
     font-weight: bold;
-    background: #bcd6ff !important;
+    background: #bcd6ff;
 }
 
 /* ---------- Форма ---------- */
@@ -164,12 +186,28 @@ body {
     background: #1a4f9c;
 }
 
-/* ---------- Подвал ---------- */
-.site-footer {
+/* ---------- Подвал (на всю ширину окна) ---------- */
+#site-footer {
     background: #2c7be5;
     color: #fff;
     width: 100%;
     padding: 15px 0;
-    text-align: center;
+    text-align: left;
     margin-top: 30px;
+}
+
+/* ---------- Мобильные устройства ---------- */
+@media (max-width: 600px) {
+    .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header-right {
+        width: 100%;
+    }
+
+    #main-nav {
+        justify-content: flex-start;
+    }
 }
